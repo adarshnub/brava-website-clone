@@ -1,110 +1,111 @@
-"use client"
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
-import { useState } from 'react';
-import ReactSimplyCarousel from 'react-simply-carousel';
-
+import styles from "./BannerCarousel.module.css";
+import React from "react";
+import Image from "next/image";
+import { useSpringCarousel } from "react-spring-carousel";
+import { HiArrowSmallLeft, HiArrowSmallRight } from "react-icons/hi2";
 
 const BannerCarousel = () => {
-    const [activeSlideIndex,setActiveSlideIndex] = useState(0);
-  return (
+  const { carouselFragment, slideToPrevItem, slideToNextItem } =
+    useSpringCarousel({
+      items: [
+        {
+          id: "item-1",
+          renderItem: (
+            <div>
+              <Image src={"/test4.avif"} 
+              objectFit="cover"
+              layout="fill"
+             />
+              <div className={styles.textOverlay}>
+                <p>Text for Image 1 - Line 1</p>
+                <p>Text for Image 1 - Line 2</p>
+              </div>
+            </div>
+          ),
+        },
+        {
+          id: "item-2",
+          renderItem: (
+            <div>
+              <Image src={"/test5.jpg"}
+              objectFit="cover"
+              layout="fill" />
+              <div className={styles.textOverlay}>
+                <p>Text for Image 2 - Line 1</p>
+                <p>Text for Image 2 - Line 2</p>
+              </div>
+            </div>
+          ),
+        },
+        {
+          id: "item-3",
+          renderItem: (
+            <div>
+              <Image src={"/test7.avif"} 
+              objectFit="cover"
+              layout="fill"/>
+              <div className={styles.textOverlay}>
+                <p>Text for Image 3 - Line 1</p>
+                <p>Text for Image 3 - Line 2</p>
+              </div>
+            </div>
+          ),
+        },
+      ],
+    });
+
+
+
+const scaleOut = () => {
+   
+    const currentCarouselItem = document.querySelector(
+      ".spring-carousel-item-active"
+    );
+    if (currentCarouselItem) {
+      currentCarouselItem.style.transform = "scale(0.7)";
+      currentCarouselItem.style.transition = "transform 0.5s ease";
+  
+      
+      const textOverlay = currentCarouselItem.querySelector(
+        `.${styles.textOverlay}`
+      );
+      if (textOverlay) {
+        textOverlay.style.animation = "none";
+        void textOverlay.offsetWidth; // Trigger reflow
+        textOverlay.style.animation = "panIn 0.9s ease forwards";
+      }
+  
+      setTimeout(() => {
+        currentCarouselItem.style.transition = "transform 0.5s ease"; 
+      }, 0);
+    }
+  };
+
+  const handleNextItem = () => {
+    slideToNextItem();
+    scaleOut();
     
+  };
 
+  const handlePrevItem = () => {
+    slideToPrevItem();
+    scaleOut();
+    
+  };
 
-   <div>
-        <ReactSimplyCarousel
-        activeSlideIndex={activeSlideIndex}
-        onRequestChange={setActiveSlideIndex}
-        itemsToShow={1}
-        itemsToScroll={1}
-        forwardBtnProps={{
-          //here you can also pass className, or any other button element attributes
-          style: {
-            alignSelf: 'center',
-            background: 'black',
-            border: 'none',
-            borderRadius: '50%',
-            color: 'white',
-            cursor: 'pointer',
-            fontSize: '20px',
-            height: 30,
-            lineHeight: 1,
-            textAlign: 'center',
-            width: 30,
-          },
-          children: <span>{`>`}</span>,
-        }}
-        backwardBtnProps={{
-          //here you can also pass className, or any other button element attributes
-          style: {
-            alignSelf: 'center',
-            background: 'black',
-            border: 'none',
-            borderRadius: '50%',
-            color: 'white',
-            cursor: 'pointer',
-            fontSize: '20px',
-            height: 30,
-            lineHeight: 1,
-            textAlign: 'center',
-            width: 30,
-          },
-          children: <span>{`<`}</span>,
-        }}
-        responsiveProps={[
-          {
-            itemsToShow: 1,
-            itemsToScroll: 1,
-            // minWidth: 768,
-          },
-        ]}
-         speed={400}
-        easing="linear" 
-    >
-        {/* here you can also pass any other element attributes. Also, you can use your custom components as slides */}
-        <div style={{ width: 300, height: 300, background: '#ff80ed' }}>
-          slide 0
-        </div>
-        <div style={{ width: 300, height: 300, background: '#065535' }}>
-          slide 1
-        </div>
-        <div style={{ width: 300, height: 300, background: '#000000' }}>
-          slide 2
-        </div>
-        <div style={{ width: 300, height: 300, background: '#133337' }}>
-          slide 3
-        </div>
-        <div style={{ width: 300, height: 300, background: '#ffc0cb' }}>
-          slide 4
-        </div>
-        <div style={{ width: 300, height: 300, background: '#ffffff' }}>
-          slide 5
-        </div>
-        <div style={{ width: 300, height: 300, background: '#ffe4e1' }}>
-          slide 6
-        </div>
-        <div style={{ width: 300, height: 300, background: '#008080' }}>
-          slide 7
-        </div>
-        <div style={{ width: 300, height: 300, background: '#ff0000' }}>
-          slide 8
-        </div>
-        <div style={{ width: 300, height: 300, background: '#e6e6fa' }}>
-          slide 9
-        </div>
-        </ReactSimplyCarousel>
-   </div>
-
-
-
-
-
-  )
-}
+  return (
+    <div>
+      <button className="absolute z-10 rounded-full left-5 top-1/2 transform -translate-y-1/2 px-4 py-3 bg-black text-white hover:bg-white hover:text-black transition duration-300" onClick={handlePrevItem}>
+        <HiArrowSmallLeft />
+      </button>
+      <div>{carouselFragment}</div>
+      <button className="absolute z-10 rounded-full right-5 top-1/2 transform -translate-y-1/2 px-4 py-3 bg-black text-white hover:bg-white hover:text-black transition duration-300" onClick={handleNextItem}>
+        <HiArrowSmallRight />
+      </button>
+    </div>
+  );
+};
 
 export default BannerCarousel;
-
-
-
-
