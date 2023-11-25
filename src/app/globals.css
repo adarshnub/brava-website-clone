@@ -25,3 +25,10 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+@font-face { 
+  font-family: "Qualy"; 
+  src: ('../fonts/qualy/Qualy Bold.ttf'); 
+  font-weight: bold; 
+  font-style: normal; 
+} 
