@@ -13,14 +13,14 @@ const BannerCarousel = () => {
         {
           id: "item-1",
           renderItem: (
-            <div className="w-screen h-[40rem]	">
+            <div className="w-screen h-[40rem]	overflow-hidden">
               <img
-                src={"/test6.jpg"}
+                src={"/test4.avif"}
                 className="object-cover w-full h-[40rem] "
               />
               <div className={styles.textOverlay}>
-                <p>Text for Image 1 - Line 1</p>
-                <p>Text for Image 1 - Line 2</p>
+                <p className="text-[2rem] md:text-[4rem]">Premium</p>
+                <p className="text-[2rem] md:text-[4rem]"> - Tees</p>
               </div>
             </div>
           ),
@@ -28,14 +28,14 @@ const BannerCarousel = () => {
         {
           id: "item-2",
           renderItem: (
-            <div className="w-screen h-[40rem]	">
+            <div className="w-screen h-[40rem]	overflow-hidden">
               <img
                 src={"/test5.jpg"}
                 className="object-cover w-full h-[40rem]"
               />
               <div className={styles.textOverlay}>
-                <p>Text for Image 2 - Line 1</p>
-                <p>Text for Image 2 - Line 2</p>
+                <p className="text-[2rem] md:text-[4rem]">Premium Zip</p>
+                <p className="text-[2rem] md:text-[4rem]">Hoodies</p>
               </div>
             </div>
           ),
@@ -43,18 +43,33 @@ const BannerCarousel = () => {
         {
           id: "item-3",
           renderItem: (
-            <div className="w-screen h-[40rem]	">
+            <div className="w-screen h-[40rem]	overflow-hidden">
               <img
                 src={"/test6.jpg"}
                 className="object-cover w-full h-[40rem]"
               />
               <div className={styles.textOverlay}>
-                <p>Text for Image 3 - Line 1</p>
-                <p>Text for Image 3 - Line 2</p>
+                <p className="text-[2rem] md:text-[4rem]">Heritage</p>
+                <p className="text-[2rem] md:text-[4rem]"> - Tees</p>
               </div>
             </div>
           ),
         },
+        {
+            id: "item-4",
+            renderItem: (
+              <div className="w-screen h-[40rem]	overflow-hidden">
+                <img
+                  src={"/test7.avif"}
+                  className="object-cover w-full h-[40rem]"
+                />
+                <div className={styles.textOverlay}>
+                  <p className="text-[2rem] md:text-[4rem]">Heritage</p>
+                  <p className="text-[2rem] md:text-[4rem]"> - Tees</p>
+                </div>
+              </div>
+            ),
+          },
       ],
     });
 
@@ -92,7 +107,7 @@ const BannerCarousel = () => {
   };
 
   return (
-    <div>
+    <div className="relative overflow-hidden">
       <button
         className="absolute z-10 rounded-full left-5 top-1/2 transform -translate-y-1/2 px-4 py-3 bg-black text-white hover:bg-white hover:text-black transition duration-300 scale-75"
         onClick={handlePrevItem}
