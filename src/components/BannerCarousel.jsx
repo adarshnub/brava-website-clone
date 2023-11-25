@@ -13,11 +13,11 @@ const BannerCarousel = () => {
         {
           id: "item-1",
           renderItem: (
-            <div>
-              <Image src={"/test4.avif"} 
-              objectFit="cover"
-              layout="fill"
-             />
+            <div className="w-screen h-[40rem]	">
+              <img
+                src={"/test6.jpg"}
+                className="object-cover w-full h-[40rem] "
+              />
               <div className={styles.textOverlay}>
                 <p>Text for Image 1 - Line 1</p>
                 <p>Text for Image 1 - Line 2</p>
@@ -28,10 +28,11 @@ const BannerCarousel = () => {
         {
           id: "item-2",
           renderItem: (
-            <div>
-              <Image src={"/test5.jpg"}
-              objectFit="cover"
-              layout="fill" />
+            <div className="w-screen h-[40rem]	">
+              <img
+                src={"/test5.jpg"}
+                className="object-cover w-full h-[40rem]"
+              />
               <div className={styles.textOverlay}>
                 <p>Text for Image 2 - Line 1</p>
                 <p>Text for Image 2 - Line 2</p>
@@ -42,10 +43,11 @@ const BannerCarousel = () => {
         {
           id: "item-3",
           renderItem: (
-            <div>
-              <Image src={"/test7.avif"} 
-              objectFit="cover"
-              layout="fill"/>
+            <div className="w-screen h-[40rem]	">
+              <img
+                src={"/test6.jpg"}
+                className="object-cover w-full h-[40rem]"
+              />
               <div className={styles.textOverlay}>
                 <p>Text for Image 3 - Line 1</p>
                 <p>Text for Image 3 - Line 2</p>
@@ -56,18 +58,14 @@ const BannerCarousel = () => {
       ],
     });
 
-
-
-const scaleOut = () => {
-   
+  const scaleOut = () => {
     const currentCarouselItem = document.querySelector(
       ".spring-carousel-item-active"
     );
     if (currentCarouselItem) {
       currentCarouselItem.style.transform = "scale(0.7)";
-      currentCarouselItem.style.transition = "transform 0.5s ease";
-  
-      
+      currentCarouselItem.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+
       const textOverlay = currentCarouselItem.querySelector(
         `.${styles.textOverlay}`
       );
@@ -76,9 +74,9 @@ const scaleOut = () => {
         void textOverlay.offsetWidth; // Trigger reflow
         textOverlay.style.animation = "panIn 0.9s ease forwards";
       }
-  
+
       setTimeout(() => {
-        currentCarouselItem.style.transition = "transform 0.5s ease"; 
+        currentCarouselItem.style.transition = "transform 0.5s ease, opacity 0.5s ease";
       }, 0);
     }
   };
@@ -86,22 +84,26 @@ const scaleOut = () => {
   const handleNextItem = () => {
     slideToNextItem();
     scaleOut();
-    
   };
 
   const handlePrevItem = () => {
     slideToPrevItem();
     scaleOut();
-    
   };
 
   return (
     <div>
-      <button className="absolute z-10 rounded-full left-5 top-1/2 transform -translate-y-1/2 px-4 py-3 bg-black text-white hover:bg-white hover:text-black transition duration-300" onClick={handlePrevItem}>
+      <button
+        className="absolute z-10 rounded-full left-5 top-1/2 transform -translate-y-1/2 px-4 py-3 bg-black text-white hover:bg-white hover:text-black transition duration-300 scale-75"
+        onClick={handlePrevItem}
+      >
         <HiArrowSmallLeft />
       </button>
       <div>{carouselFragment}</div>
-      <button className="absolute z-10 rounded-full right-5 top-1/2 transform -translate-y-1/2 px-4 py-3 bg-black text-white hover:bg-white hover:text-black transition duration-300" onClick={handleNextItem}>
+      <button
+        className="absolute z-10 rounded-full right-5 top-1/2 transform -translate-y-1/2 px-4 py-3 bg-black text-white hover:bg-white hover:text-black transition duration-300 scale-75"
+        onClick={handleNextItem}
+      >
         <HiArrowSmallRight />
       </button>
     </div>
