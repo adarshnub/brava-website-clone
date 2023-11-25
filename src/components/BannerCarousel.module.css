@@ -11,8 +11,8 @@
     top: 50%;
     transform: translateY(-50%);
     padding: 8px;
-    background-color: #fff; /* Adjust background color as needed */
-    border: 1px solid #ccc; /* Adjust border styles as needed */
+    background-color: #fff; 
+    border: 1px solid #ccc;
     cursor: pointer;
     z-index: 1;
   }
@@ -42,10 +42,10 @@
   @keyframes panIn {
     from {
       opacity: 0;
-      transform: translate(-50%, 100%); /* Start from bottom */
+      transform: translate(-50%, 100%); 
     }
     to {
       opacity: 1;
-      transform: translate(-50%, 0); /* End at the top */
+      transform: translate(-50%, 0); 
     }
   }

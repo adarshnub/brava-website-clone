@@ -15,11 +15,11 @@ const BannerCarousel = () => {
           renderItem: (
             <div className="w-screen h-[40rem]	overflow-hidden">
               <img
-                src={"/test4.avif"}
+                src={"/test7.avif"}
                 className="object-cover w-full h-[40rem] "
               />
               <div className={styles.textOverlay}>
-                <p className="text-[2rem] md:text-[4rem]">Premium</p>
+                <p className="text-[2rem]  md:text-[4rem]">Premium</p>
                 <p className="text-[2rem] md:text-[4rem]"> - Tees</p>
               </div>
             </div>
@@ -56,20 +56,20 @@ const BannerCarousel = () => {
           ),
         },
         {
-            id: "item-4",
-            renderItem: (
-              <div className="w-screen h-[40rem]	overflow-hidden">
-                <img
-                  src={"/test7.avif"}
-                  className="object-cover w-full h-[40rem]"
-                />
-                <div className={styles.textOverlay}>
-                  <p className="text-[2rem] md:text-[4rem]">Heritage</p>
-                  <p className="text-[2rem] md:text-[4rem]"> - Tees</p>
-                </div>
+          id: "item-4",
+          renderItem: (
+            <div className="w-screen h-[40rem]	overflow-hidden">
+              <img
+                src={"/test4.avif"}
+                className="object-cover w-full h-[40rem]"
+              />
+              <div className={styles.textOverlay}>
+                <p className="text-[2rem] md:text-[4rem]">Heritage</p>
+                <p className="text-[2rem] md:text-[4rem]"> - Tees</p>
               </div>
-            ),
-          },
+            </div>
+          ),
+        },
       ],
     });
 
@@ -79,7 +79,8 @@ const BannerCarousel = () => {
     );
     if (currentCarouselItem) {
       currentCarouselItem.style.transform = "scale(0.7)";
-      currentCarouselItem.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+      currentCarouselItem.style.transition =
+        "transform 0.5s ease, opacity 0.5s ease";
 
       const textOverlay = currentCarouselItem.querySelector(
         `.${styles.textOverlay}`
@@ -91,7 +92,8 @@ const BannerCarousel = () => {
       }
 
       setTimeout(() => {
-        currentCarouselItem.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+        currentCarouselItem.style.transition =
+          "transform 0.5s ease, opacity 0.5s ease";
       }, 0);
     }
   };

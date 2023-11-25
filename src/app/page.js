@@ -2,9 +2,9 @@
 
 import BannerCarousel from "@/components/BannerCarousel";
 import Navbar from "@/components/Navbar";
-import SlideshowImg from "@/components/SlideshowImg";
+
 import TopBar from "@/components/TopBar";
-import Image from "next/image";
+
 import React, { useState, useEffect } from "react";
 
 export default function Home() {
@@ -27,7 +27,6 @@ export default function Home() {
       {showTopBar && <TopBar />}
       <Navbar />
       <BannerCarousel />
-      <SlideshowImg />
     </div>
   );
 }

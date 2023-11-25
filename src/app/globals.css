@@ -29,7 +29,7 @@ body {
 @font-face { 
   font-family: "Qualy"; 
   src: ('../fonts/qualy/Qualy Bold.ttf'); 
-  font-weight: bold; 
+  /* font-weight: bold;  */
   font-style: normal; 
 } 
 
